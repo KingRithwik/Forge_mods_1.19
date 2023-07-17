@@ -1,6 +1,8 @@
 package net.kingrithwik.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.kingrithwik.tutorialmod.block.ModBlocks;
+import net.kingrithwik.tutorialmod.item.ModItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,8 +27,15 @@ public class TutorialMod
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+
         modEventBus.addListener(this::commonSetup);
+
         MinecraftForge.EVENT_BUS.register(this);
+
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
